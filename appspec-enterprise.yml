@@ -1,1 +1,11 @@
-ffff
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/enterprise-version
+
+hooks:
+  AfterInstall:
+    - location: scripts/start_nginx.sh
+      timeout: 300
+      runas: root
