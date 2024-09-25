@@ -2,11 +2,10 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/enterprise_addons 
+    destination: /opt/enterprise-version
+
 hooks:
   AfterInstall:
-    - location: scripts/rsync.sh
+    - location: scripts/start_nginx.sh
       timeout: 300
-  ApplicationStart:
-    - location: scripts/restart_server.sh
-      timeout: 300
+      runas: root
