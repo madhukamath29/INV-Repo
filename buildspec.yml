@@ -21,7 +21,7 @@ phases:
       - git clone --branch common-addon https://github.com/madhukamath29/INV-Repo.git common-addon-repo
 
       - echo "Cloning Restaurant branch from Inv-repo..."
-      - git clone --branch Restaurant-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git restaurant-repo  # Replace with the correct repository URL if necessary
+      - git clone --branch Restaurent-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git Restaurent-Enterprise  
 
   build:
     commands:
