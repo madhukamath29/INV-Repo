@@ -11,9 +11,6 @@ phases:
       - echo "Cloning Community repo..."
       - git clone https://github.com/madhukamath29/demo-odoo17.git community-repo
 
-      - echo "Cloning Enterprise repo..."
-      - git clone https://github.com/madhukamath29/enterprise_repo.git enterprise-repo
-
       - echo "Cloning Third-party addons from Inv-repo..."
       - git clone --branch Third-party-addon https://github.com/madhukamath29/INV-Repo.git third-party-repo
 
@@ -21,7 +18,7 @@ phases:
       - git clone --branch common-addon https://github.com/madhukamath29/INV-Repo.git common-addon-repo
 
       - echo "Cloning Restaurant branch from Inv-repo..."
-      - git clone --branch Restaurent --single-branch https://github.com/madhukamath29/INV-Repo.git restaurent-repo  # Replace with the correct repository URL if necessary
+      - git clone --branch Restaurent-community --single-branch https://github.com/madhukamath29/INV-Repo.git restaurent-repo  # Replace with the correct repository URL if necessary
 
   build:
     commands:
@@ -31,7 +28,7 @@ phases:
       - cp -r enterprise-repo/* merged-addons/
       - cp -r third-party-repo/* merged-addons/
       - cp -r common-addon-repo/* merged-addons/
-      - cp -r restaurent-repo/* merged-addons/  # Merge files from the Restaurant branch
+      - cp -r restaurent-repo/* merged-addons/ 
 
       # Move merged files to the appropriate directory based on the branch
       - echo "Moving merged files to the appropriate directory..."
