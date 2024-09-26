@@ -18,7 +18,7 @@ phases:
       - git clone --branch common-addon https://github.com/madhukamath29/INV-Repo.git common-addon-repo
 
       - echo "Cloning GST branch from Inv-repo..."
-      - git clone --branch GST-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git gst-repo  
+      - git clone --branch GST-community --single-branch https://github.com/madhukamath29/INV-Repo.git gst-repo  
 
   build:
     commands:
