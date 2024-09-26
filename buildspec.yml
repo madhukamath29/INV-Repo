@@ -31,7 +31,7 @@ phases:
       - cp -r enterprise-repo/* merged-addons/
       - cp -r third-party-repo/* merged-addons/
       - cp -r common-addon-repo/* merged-addons/
-      - cp -r restaurant-repo/* merged-addons/  # Merge files from the Restaurant branch
+      - cp -r Restaurent-Enterprise/* merged-addons/  # Merge files from the Restaurant branch
 
       # Move merged files to the appropriate directory based on the branch
       - echo "Moving merged files to the appropriate directory..."
