@@ -25,7 +25,6 @@ phases:
       - echo "Merging the necessary repositories into one directory..."
       - mkdir -p merged-addons
       - cp -r community-repo/* merged-addons/
-      - cp -r enterprise-repo/* merged-addons/
       - cp -r third-party-repo/* merged-addons/
       - cp -r common-addon-repo/* merged-addons/
       - cp -r restaurent-repo/* merged-addons/ 
