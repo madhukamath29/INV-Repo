@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo "Installing necessary dependencies"
-      - apt-get update && apt-get install -y git aws-cli
+      - apt-get update && apt-get install -y git 
 
   pre_build:
     commands:
