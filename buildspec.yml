@@ -8,7 +8,7 @@ phases:
 
   pre_build:
     commands:
-      - echo "Cloning Community repo..."
+      - echo "Cloning Community repo...."
       - git clone https://github.com/madhukamath29/demo-odoo17.git community-repo
 
       - echo "Cloning Enterprise repo..."
