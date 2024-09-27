@@ -17,7 +17,7 @@ phases:
 
       - echo "Cloning Enterprise repo..."
       # Use the token for authentication in the clone command
-      - git clone https://$GITHUB_TOKEN@github.com/github.com/Code-with-Maddy/test.git enterprise-repo
+      - git clone https://$GITHUB_TOKEN@github.com/Code-with-Maddy/test.git enterprise-repo
 
       - echo "Cloning Third-party addons from Inv-repo..."
       - git clone --branch Third-party-addon https://github.com/madhukamath29/INV-Repo.git third-party-repo
