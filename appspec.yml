@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/GST-enterprise
+    destination: /opt/odoo17/Enterprise-addons-code
 
 hooks:
   AfterInstall:
