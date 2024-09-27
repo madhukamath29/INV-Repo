@@ -30,7 +30,7 @@ phases:
       - cp -r restaurent-repo/* merged-addons/ 
 
       # Move merged files to the appropriate directory based on the branch
-      - echo "Moving merged files to the appropriate directory..."
+      - echo "Moving merged files to the appropriate directory...."
 
   post_build:
     commands:
