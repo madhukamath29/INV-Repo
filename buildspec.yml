@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Fetching the Personal Access Token from Parameter Store..."
       # Fetching the Personal Access Token and exporting it as an environment variable
-      - export GITHUB_TOKEN=$(aws ssm get-parameter --name "PAT-Enterprise" --with-decryption --query "Parameter.Value" --output text)
+      - export GITHUB_TOKEN=$(aws ssm get-parameter --name "PAT-restaurent" --with-decryption --query "Parameter.Value" --output text)
 
       - echo "Cloning Community repo...."
       - git clone https://github.com/madhukamath29/demo-odoo17.git community-repo
