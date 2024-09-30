@@ -4,44 +4,48 @@ phases:
   install:
     commands:
       - echo "Installing necessary dependencies"
-      - apt-get update && apt-get install -y git
+      - apt-get update && apt-get install -y git 
 
   pre_build:
     commands:
-      - echo "Cloning Community repo..."
+      - echo "Fetching the Personal Access Token from Parameter Store..."
+      # Fetching the Personal Access Token and exporting it as an environment variable
+      - export GITHUB_TOKEN=$(aws ssm get-parameter --name "PAT-Enterprise" --with-decryption --query "Parameter.Value" --output text)
+
+      - echo "Cloning Community repo....."
       - git clone https://github.com/madhukamath29/demo-odoo17.git community-repo
 
       - echo "Cloning Enterprise repo..."
-      - git clone https://github.com/madhukamath29/enterprise_repo.git enterprise-repo
+      # Use the token for authentication in the clone command
+      - git clone https://$GITHUB_TOKEN@github.com/Code-with-Maddy/test.git enterprise-repo
 
       - echo "Cloning Third-party addons from Inv-repo..."
       - git clone --branch Third-party-addon https://github.com/madhukamath29/INV-Repo.git third-party-repo
 
-      - echo "Cloning Common addons from Inv-repo..."
+      - echo "Cloning Common addons from Inv-repo...."
       - git clone --branch common-addon https://github.com/madhukamath29/INV-Repo.git common-addon-repo
 
       - echo "Cloning Restaurant branch from Inv-repo..."
-      - git clone --branch Restaurent-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git Restaurent-Enterprise  
-
+      - git clone --branch Restaurent-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git Restaurent-Enterprise 
   build:
     commands:
-      - echo "Merging the necessary repositories into one directory..."
+      - echo "Merging the necessary repositories into one directory...."
       - mkdir -p merged-addons
       - cp -r community-repo/* merged-addons/
       - cp -r enterprise-repo/* merged-addons/
       - cp -r third-party-repo/* merged-addons/
       - cp -r common-addon-repo/* merged-addons/
-      - cp -r Restaurent-Enterprise/* merged-addons/  # Merge files from the Restaurant branch
+      - cp -r Restaurent-Enterprise/* merged-addons/  
 
       # Move merged files to the appropriate directory based on the branch
-      - echo "Moving merged files to the appropriate directory...."
+      - echo "Moving merged files to the appropriate directory..."
 
   post_build:
     commands:
-      - echo "Build complete, files merged."
+      - echo "Build complete, files merged..."
 
 artifacts:
   files:
-    - '**/*'  # Upload all merged files from the merged-addons directory
+    - '**/*'  
 
-  base-directory: merged-addons  # Set the base directory for artifacts
+  base-directory: merged-addons
