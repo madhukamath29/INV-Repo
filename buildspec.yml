@@ -9,14 +9,12 @@ phases:
   pre_build:
     commands:
       - echo "Fetching the Personal Access Token from Parameter Store..."
-      # Fetching the Personal Access Token and exporting it as an environment variable
-      - export GITHUB_TOKEN=$(aws ssm get-parameter --name "PAT-restaurent" --with-decryption --query "Parameter.Value" --output text)
+      - export GITHUB_TOKEN=$(aws ssm get-parameter --name "PAT-Enterprise" --with-decryption --query "Parameter.Value" --output text)
 
       - echo "Cloning Community repo...."
       - git clone https://github.com/madhukamath29/demo-odoo17.git community-repo
 
       - echo "Cloning Enterprise repo..."
-      # Use the token for authentication in the clone command
       - git clone https://$GITHUB_TOKEN@github.com/Code-with-Maddy/test.git enterprise-repo
 
       - echo "Cloning Third-party addons from Inv-repo..."
@@ -25,7 +23,7 @@ phases:
       - echo "Cloning Common addons from Inv-repo...."
       - git clone --branch common-addon https://github.com/madhukamath29/INV-Repo.git common-addon-repo
 
-      - echo "Cloning GST branch from Inv-repo..."
+      - echo "Cloning GST branch from Inv-repo...."
       - git clone --branch Restaurent-Enterprise --single-branch https://github.com/madhukamath29/INV-Repo.git restaurent-repo
 
   build:
